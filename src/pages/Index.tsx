@@ -42,30 +42,33 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 via-blue-50 to-green-100">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-green-100 sticky top-0 z-50">
+      <header className="bg-gradient-to-r from-purple-600/90 via-blue-600/90 to-green-600/90 backdrop-blur-md border-b border-white/20 sticky top-0 z-50 shadow-lg">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 rounded-full flex items-center justify-center shadow-lg">
                 <Award className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-yellow-300 via-pink-300 to-blue-300 bg-clip-text text-transparent drop-shadow-sm">
                   CleanUp Champion
                 </h1>
               </div>
             </div>
             
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 bg-green-100 px-3 py-1.5 rounded-full">
-                <Award className="w-4 h-4 text-green-600" />
-                <span className="text-green-600 font-semibold">{userPoints.toLocaleString()} pts</span>
+              <div className="flex items-center space-x-2 bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 rounded-full shadow-lg">
+                <Award className="w-4 h-4 text-white" />
+                <span className="text-white font-semibold">{userPoints.toLocaleString()} pts</span>
               </div>
-              <Avatar className="w-8 h-8">
+              <Avatar 
+                className="w-8 h-8 cursor-pointer ring-2 ring-white/50 hover:ring-4 hover:ring-pink-300 transition-all duration-300 shadow-lg"
+                onClick={() => setCurrentScreen('profile')}
+              >
                 <AvatarImage src="/placeholder.svg" />
-                <AvatarFallback className="bg-green-200 text-green-700">SJ</AvatarFallback>
+                <AvatarFallback className="bg-gradient-to-br from-pink-400 to-purple-500 text-white font-bold">SJ</AvatarFallback>
               </Avatar>
             </div>
           </div>
@@ -78,17 +81,17 @@ const Index = () => {
       </main>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-green-100 z-50">
+      <nav className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-indigo-600/95 via-purple-600/95 to-pink-600/95 backdrop-blur-md border-t border-white/20 z-50 shadow-xl">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-around py-3">
             {navigationItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => setCurrentScreen(item.id)}
-                className={`flex flex-col items-center space-y-1 p-2 rounded-lg transition-colors ${
+                className={`flex flex-col items-center space-y-1 p-2 rounded-lg transition-all duration-300 ${
                   currentScreen === item.id
-                    ? 'text-green-600 bg-green-50'
-                    : 'text-gray-500 hover:text-green-600'
+                    ? 'text-white bg-white/20 scale-110 shadow-lg'
+                    : 'text-white/70 hover:text-white hover:bg-white/10 hover:scale-105'
                 }`}
               >
                 <item.icon className="w-5 h-5" />

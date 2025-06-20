@@ -29,28 +29,30 @@ const WeeklyLeaderboard = ({ currentUserPoints }: WeeklyLeaderboardProps) => {
   };
 
   return (
-    <Card className="bg-white/70 backdrop-blur-sm border-green-100">
-      <CardHeader>
+    <Card className="bg-gradient-to-br from-yellow-50 to-orange-100 border-2 border-yellow-200 shadow-lg">
+      <CardHeader className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-t-lg">
         <CardTitle className="flex items-center space-x-2">
-          <Trophy className="w-5 h-5 text-yellow-500" />
+          <Trophy className="w-5 h-5 text-white" />
           <span>Weekly Leaderboard</span>
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-4">
         <div className="space-y-3">
           {leaderboardData.map((user) => (
             <div 
               key={user.rank}
-              className={`flex items-center space-x-4 p-3 rounded-lg ${
-                user.isCurrentUser ? 'bg-green-50 border-2 border-green-200' : 'bg-gray-50'
+              className={`flex items-center space-x-4 p-3 rounded-lg transition-all duration-300 ${
+                user.isCurrentUser 
+                  ? 'bg-gradient-to-r from-green-100 to-blue-100 border-2 border-green-300 shadow-md' 
+                  : 'bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200'
               }`}
             >
               <div className="flex items-center justify-center w-8 h-8">
                 {getRankIcon(user.rank)}
               </div>
-              <Avatar className="w-8 h-8">
+              <Avatar className="w-8 h-8 ring-2 ring-white shadow-sm">
                 <AvatarImage src={user.avatar} />
-                <AvatarFallback className="bg-green-200 text-green-700 text-sm">
+                <AvatarFallback className="bg-gradient-to-br from-indigo-400 to-purple-500 text-white text-sm font-bold">
                   {user.initials}
                 </AvatarFallback>
               </Avatar>
